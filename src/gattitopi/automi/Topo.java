@@ -5,8 +5,10 @@
  */
 package gattitopi.automi;
 
+import gattitopi.automi.pezzi.Direzione;
 import gattitopi.automi.pezzi.NasoTopo;
 import gattitopi.automi.pezzi.ZampeTopo;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,7 +22,9 @@ public class Topo extends AutomaBase {
 
     @Override
     public Posizione muovi() {
-        return zampe.zitzit(naso.sniff(posizione));
+        ArrayList<Direzione> muri = zampe.muri(posizione);
+        
+        return zampe.zitzit(naso.sniff(posizione, muri));
     }
     
 }

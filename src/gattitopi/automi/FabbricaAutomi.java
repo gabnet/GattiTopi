@@ -6,8 +6,10 @@
 package gattitopi.automi;
 
 import gattitopi.ambiente.Prato;
-import gattitopi.automi.pezzi.Naso;
-import gattitopi.automi.pezzi.Zampe;
+import gattitopi.automi.pezzi.NasoGatto;
+import gattitopi.automi.pezzi.NasoTopo;
+import gattitopi.automi.pezzi.ZampeGatto;
+import gattitopi.automi.pezzi.ZampeTopo;
 
 /**
  *
@@ -19,9 +21,9 @@ public class FabbricaAutomi {
         
         switch (tipo){
             case TOPO:
-                return new Topo(new Posizione(x, y), new Naso(prato), new Zampe(prato));
+                return new Topo(new Posizione(x, y), new NasoTopo(prato), new ZampeTopo(prato));
             case GATTO:
-                return new Gatto(new Posizione(x, y), new Naso(prato), new Zampe(prato));
+                return new Gatto(new Posizione(x, y), new NasoGatto(prato), new ZampeGatto(prato));
             default:
                 return new Nullo(new Posizione(x, y));
         }

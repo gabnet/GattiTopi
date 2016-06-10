@@ -13,12 +13,15 @@ import java.util.ArrayList;
  *
  * @author gorig
  */
-public abstract class Zampe extends Pezzo {
-    
-    public Zampe(Prato prato) {
+public class NasoGatto extends Naso {
+
+    public NasoGatto(Prato prato) {
         super(prato);
     }
+
+    @Override
+    public Direzione sniff(Posizione posizione, ArrayList<Direzione> muri) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    public abstract Posizione zitzit(Direzione direzione);
-    public abstract ArrayList<Direzione> muri(Posizione posizione);
 }

@@ -5,8 +5,10 @@
  */
 package gattitopi.automi;
 
-import gattitopi.automi.pezzi.Naso;
-import gattitopi.automi.pezzi.Zampe;
+import gattitopi.automi.pezzi.Direzione;
+import gattitopi.automi.pezzi.NasoGatto;
+import gattitopi.automi.pezzi.ZampeGatto;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,12 +16,15 @@ import gattitopi.automi.pezzi.Zampe;
  */
 public class Gatto extends AutomaBase{
 
-    public Gatto(Posizione posizione, Naso naso, Zampe zampe) {
+    public Gatto(Posizione posizione, NasoGatto naso, ZampeGatto zampe) {
         super(EnumAutomi.GATTO, posizione, naso, zampe);
     }
 
     @Override
     public Posizione muovi() {
-        return zampe.cammina(naso.sniff());
+        
+        ArrayList<Direzione> muri = zampe.muri(posizione);
+        
+        return zampe.zitzit(naso.sniff(posizione, muri));
     }
 }

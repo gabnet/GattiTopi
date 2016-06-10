@@ -10,7 +10,6 @@ import gattitopi.automi.EnumAutomi;
 import gattitopi.automi.FabbricaAutomi;
 import gattitopi.automi.Nullo;
 import gattitopi.automi.Posizione;
-import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -72,5 +71,9 @@ public class Prato {
                 prato.posiziona(new Nullo(new Posizione(riga, colonna)), riga, colonna);
         
         return prato;
+    }
+
+    public boolean valido(int riga, int colonna) {
+        return riga >= 0 && riga <= righe && colonna >= 0 && colonna <= colonne;
     }
 }

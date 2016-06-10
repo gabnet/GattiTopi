@@ -26,62 +26,62 @@ public class NasoTopo extends Naso {
         super(prato);
     }
     
-    public Direzione sniff(Posizione posizione, ArrayList<Direzione> esclusi){
+    public Direzione sniff(Posizione posizione, ArrayList<Direzione> muri){
         
         //O
         if (checkGatto(prato.prendi(posizione.riga, posizione.colonna -  1)))
-            return calcolaDirezioneInseguito(Direzione.E, esclusi);
+            return calcolaDirezioneInseguito(Direzione.E, muri);
 
         //NO
         if (checkGatto(prato.prendi(posizione.riga - 1, posizione.colonna - 1)))
-            return calcolaDirezioneInseguito(Direzione.SE, esclusi);
+            return calcolaDirezioneInseguito(Direzione.SE, muri);
         
         //N
         if (checkGatto(prato.prendi(posizione.riga - 1, posizione.colonna)))
-            return calcolaDirezioneInseguito(Direzione.S, esclusi);
+            return calcolaDirezioneInseguito(Direzione.S, muri);
 
         //NE
         if (checkGatto(prato.prendi(posizione.riga - 1, posizione.colonna + 1)))
-            return calcolaDirezioneInseguito(Direzione.SO, esclusi);
+            return calcolaDirezioneInseguito(Direzione.SO, muri);
         
         //E
         if (checkGatto(prato.prendi(posizione.riga, posizione.colonna + 1)))
-            return calcolaDirezioneInseguito(Direzione.O, esclusi);
+            return calcolaDirezioneInseguito(Direzione.O, muri);
         
         //SE
         if (checkGatto(prato.prendi(posizione.riga + 1, posizione.colonna + 1)))
-            return calcolaDirezioneInseguito(Direzione.NO, esclusi);
+            return calcolaDirezioneInseguito(Direzione.NO, muri);
         
         //S
         if (checkGatto(prato.prendi(posizione.riga + 1, posizione.colonna)))
-            return calcolaDirezioneInseguito(Direzione.N, esclusi);
+            return calcolaDirezioneInseguito(Direzione.N, muri);
         
         //SO
         if (checkGatto(prato.prendi(posizione.riga + 1, posizione.colonna - 1)))
-            return calcolaDirezioneInseguito(Direzione.NE, esclusi);
+            return calcolaDirezioneInseguito(Direzione.NE, muri);
         
-        return calcolaDirezioneLibero(esclusi);
+        return calcolaDirezioneLibero(muri);
     }
 
     private boolean checkGatto(Automa automa) {
         return EnumAutomi.GATTO.equals(automa.tipo());
     }
 
-    private Direzione calcolaDirezioneInseguito(Direzione direzione, ArrayList<Direzione> esclusi) {
+    private Direzione calcolaDirezioneInseguito(Direzione direzione, ArrayList<Direzione> muri) {
         
         ArrayDeque<Decisione> direzioniConsigliate = ScatolaDelleDecisioni.consigliate(direzione);
         
         for(int i = 0; i < ScatolaDelleDecisioni.possibilita; i++){
             Decisione decisione = direzioniConsigliate.pop();
             
-            if (!esclusi.contains(decisione.direzione))
+            if (!muri.contains(decisione.direzione))
                 return decisione.direzione;
         }
         
         return Direzione.N;
     }
 
-    private Direzione calcolaDirezioneLibero(ArrayList<Direzione> esclusi) {
+    private Direzione calcolaDirezioneLibero(ArrayList<Direzione> muri) {
         Random dado8 = new Random();
         
         ArrayList<Direzione> listaDirezioni = ScatolaDelleDecisioni.listaDirezioni();
@@ -89,7 +89,7 @@ public class NasoTopo extends Naso {
         Collections.shuffle(listaDirezioni, dado8);
         
         for(Direzione d : listaDirezioni)
-            if (!esclusi.contains(d))
+            if (!muri.contains(d))
                 return d;
         
         return Direzione.N;

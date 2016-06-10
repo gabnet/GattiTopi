@@ -19,5 +19,5 @@ public abstract class Naso extends Pezzo {
         super(prato);
     }
     
-    public abstract Direzione sniff(Posizione posizione, ArrayList<Direzione> esclusi);
+    public abstract Direzione sniff(Posizione posizione, ArrayList<Direzione> muri);
 }
