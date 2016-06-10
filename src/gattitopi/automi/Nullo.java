@@ -19,9 +19,4 @@ public class Nullo extends AutomaBase {
     public Posizione muovi() {
         return posizione;
     }
-
-    @Override
-    public char simbolo() {
-        return EnumAutomi.NULLO.simbolo();
-    }
 }

@@ -16,7 +16,7 @@ public class ConsoleGui {
     public static void stampa(Prato prato) {
         for (int riga = 0; riga < prato.righe(); riga++){
             for (int colonna = 0; colonna < prato.colonne(); colonna++)
-                System.out.printf("%c", prato.prendi(riga, colonna).simbolo());
+                System.out.printf(" %c ", prato.prendi(riga, colonna).simbolo());
             
             System.out.println();
         }

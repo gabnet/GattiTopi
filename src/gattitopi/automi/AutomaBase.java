@@ -28,15 +28,16 @@ public abstract class AutomaBase implements Automa {
         this.naso = naso;
         this.zampe = zampe;
     }
-    
-    @Override
-    public abstract Posizione muovi();
 
-    @Override
-    public abstract char simbolo();
+    public EnumAutomi tipo(){
+        return tipo;
+    }
 
-    @Override
     public Integer id() {
         return id;
+    }
+    
+    public char simbolo(){
+        return tipo.simbolo();
     }
 }

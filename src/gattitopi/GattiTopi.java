@@ -6,6 +6,7 @@
 package gattitopi;
 
 import gattitopi.ambiente.Prato;
+import gattitopi.automi.EnumAutomi;
 import gattitopi.consolegui.ConsoleGui;
 
 /**
@@ -20,6 +21,8 @@ public class GattiTopi {
     public static void main(String[] args) {
         
         Prato prato = Prato.pratoVuoto(20, 20);
+        prato.aggiungiAutomi(EnumAutomi.TOPO, 10);
+        prato.aggiungiAutomi(EnumAutomi.GATTO, 10);
         
         ConsoleGui.stampa(prato);
     }

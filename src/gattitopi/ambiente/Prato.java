@@ -6,8 +6,12 @@
 package gattitopi.ambiente;
 
 import gattitopi.automi.Automa;
+import gattitopi.automi.EnumAutomi;
+import gattitopi.automi.FabbricaAutomi;
 import gattitopi.automi.Nullo;
 import gattitopi.automi.Posizione;
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  *
@@ -39,6 +43,25 @@ public class Prato {
     
     public void posiziona(Automa automa, int riga, int colonna){
         matrice[riga][colonna] = automa;
+    }
+    
+    public void aggiungiAutomi(EnumAutomi tipo, int qta){
+        
+        Random dado = new Random();
+        
+        while (qta > 0)
+            for (int riga = 0; riga < righe() && qta > 0; riga++)
+                for (int colonna = 0; colonna < colonne()  && qta > 0; colonna++){
+                    if (EnumAutomi.NULLO.equals(prendi(riga, colonna).tipo())){
+                        
+                        if (dado.nextInt(righe() * colonne()) % 97 == 0){
+                            
+                            posiziona(FabbricaAutomi.crea(tipo, riga, colonna, this), riga, colonna);
+                            
+                            qta--;
+                        }
+                    }
+                }
     }
     
     public static Prato pratoVuoto(int maxX, int maxY){

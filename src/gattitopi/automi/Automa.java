@@ -11,6 +11,7 @@ package gattitopi.automi;
  */
 public interface Automa {
     public Posizione muovi();
+    public EnumAutomi tipo();
     public char simbolo();
     public Integer id();
 }
