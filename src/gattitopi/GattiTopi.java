@@ -5,9 +5,10 @@
  */
 package gattitopi;
 
+import gattitopi.ambiente.Evoluzione;
+import gattitopi.ambiente.Popolazione;
 import gattitopi.ambiente.Prato;
 import gattitopi.automi.EnumAutomi;
-import gattitopi.consolegui.ConsoleGui;
 
 /**
  *
@@ -21,9 +22,10 @@ public class GattiTopi {
     public static void main(String[] args) {
         
         Prato prato = Prato.pratoVuoto(20, 20);
-        prato.aggiungiAutomi(EnumAutomi.TOPO, 10);
-        prato.aggiungiAutomi(EnumAutomi.GATTO, 10);
+        Popolazione popolazione = new Popolazione();
+        prato.aggiungiAutomi(EnumAutomi.TOPO, 10, popolazione);
         
-        ConsoleGui.stampa(prato);
+        Evoluzione evo = new Evoluzione(popolazione, prato, 5);
+        evo.via();
     }
 }

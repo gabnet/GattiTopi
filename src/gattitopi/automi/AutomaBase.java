@@ -40,4 +40,8 @@ public abstract class AutomaBase implements Automa {
     public char simbolo(){
         return tipo.simbolo();
     }
+    
+    public Posizione posizione(){
+        return posizione;
+    }
 }

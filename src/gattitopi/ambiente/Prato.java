@@ -44,7 +44,7 @@ public class Prato {
         matrice[riga][colonna] = automa;
     }
     
-    public void aggiungiAutomi(EnumAutomi tipo, int qta){
+    public void aggiungiAutomi(EnumAutomi tipo, int qta, Popolazione popolazione){
         
         Random dado = new Random();
         
@@ -55,7 +55,10 @@ public class Prato {
                         
                         if (dado.nextInt(righe() * colonne()) % 97 == 0){
                             
-                            posiziona(FabbricaAutomi.crea(tipo, riga, colonna, this), riga, colonna);
+                            Automa automa = FabbricaAutomi.crea(tipo, riga, colonna, this);
+                            
+                            posiziona(automa, riga, colonna);
+                            popolazione.aggiungiAutoma(automa);
                             
                             qta--;
                         }
@@ -75,5 +78,10 @@ public class Prato {
 
     public boolean valido(int riga, int colonna) {
         return riga >= 0 && riga <= righe && colonna >= 0 && colonna <= colonne;
+    }
+
+    public void sposta(Automa daMuovere, Posizione nuova) {
+        posiziona(new Nullo(daMuovere.posizione()), daMuovere.posizione().riga, daMuovere.posizione().colonna);
+        posiziona(daMuovere, nuova.riga, nuova.colonna);
     }
 }
