@@ -18,8 +18,8 @@ public abstract class AutomaBase implements Automa {
     protected Posizione posizione;
     private final Integer id;
     
-    private final Naso naso;
-    private final Zampe zampe;
+    protected final Naso naso;
+    protected final Zampe zampe;
 
     public AutomaBase(EnumAutomi tipo, Posizione posizione, Naso naso, Zampe zampe) {
         this.tipo = tipo;

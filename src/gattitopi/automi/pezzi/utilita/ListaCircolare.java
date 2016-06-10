@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.automi;
+package gattitopi.automi.pezzi.utilita;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public class Posizione {
+public class ListaCircolare<E> extends ArrayList<E> {
 
-    public final int riga;
-    public final int colonna;
-
-    public Posizione(int riga, int colonna) {
-        this.riga = riga;
-        this.colonna = colonna;
+    @Override
+    public E get(int index) {
+        return super.get(index % size());
     }
 }

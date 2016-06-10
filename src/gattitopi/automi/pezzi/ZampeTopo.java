@@ -7,17 +7,18 @@ package gattitopi.automi.pezzi;
 
 import gattitopi.ambiente.Prato;
 import gattitopi.automi.Posizione;
-import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public abstract class Naso extends Pezzo {
+public class ZampeTopo extends Zampe {
 
-    public Naso(Prato prato) {
+    public ZampeTopo(Prato prato) {
         super(prato);
     }
-    
-    public abstract Direzione sniff(Posizione posizione, ArrayList<Direzione> esclusi);
+ 
+    public Posizione zitzit(Direzione direzione) {
+        return null;
+    }
 }

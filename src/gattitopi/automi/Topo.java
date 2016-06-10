@@ -5,8 +5,8 @@
  */
 package gattitopi.automi;
 
-import gattitopi.automi.pezzi.Naso;
-import gattitopi.automi.pezzi.Zampe;
+import gattitopi.automi.pezzi.NasoTopo;
+import gattitopi.automi.pezzi.ZampeTopo;
 
 /**
  *
@@ -14,13 +14,13 @@ import gattitopi.automi.pezzi.Zampe;
  */
 public class Topo extends AutomaBase {
 
-    public Topo(Posizione posizione, Naso naso, Zampe zampe) {
+    public Topo(Posizione posizione, NasoTopo naso, ZampeTopo zampe) {
         super(EnumAutomi.TOPO, posizione, naso, zampe);
     }
 
     @Override
     public Posizione muovi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return zampe.zitzit(naso.sniff(posizione));
     }
     
 }

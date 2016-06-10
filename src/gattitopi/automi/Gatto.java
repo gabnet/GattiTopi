@@ -20,7 +20,6 @@ public class Gatto extends AutomaBase{
 
     @Override
     public Posizione muovi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return zampe.cammina(naso.sniff());
     }
-    
 }

@@ -5,18 +5,17 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
-import gattitopi.automi.Posizione;
-
 /**
  *
  * @author gorig
  */
-public abstract class Zampe extends Pezzo {
-    
-    public Zampe(Prato prato) {
-        super(prato);
-    }
-    
-    public abstract Posizione zitzit(Direzione direzione);
+public enum Direzione {
+    N,
+    NE,
+    E,
+    SE,
+    S,
+    SO,
+    O,
+    NO;
 }

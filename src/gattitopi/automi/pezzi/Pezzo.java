@@ -12,7 +12,7 @@ import gattitopi.ambiente.Prato;
  * @author gorig
  */
 public class Pezzo {
-    private Prato prato;
+    protected Prato prato;
     
     public Pezzo(Prato prato){
         this.prato = prato;
