@@ -21,10 +21,10 @@ public abstract class AutomaBase implements Automa {
     protected final Naso naso;
     protected final Zampe zampe;
 
-    public AutomaBase(EnumAutomi tipo, Posizione posizione, Naso naso, Zampe zampe) {
+    public AutomaBase(EnumAutomi tipo, Integer id, Posizione posizione, Naso naso, Zampe zampe) {
         this.tipo = tipo;
         this.posizione = posizione;
-        id = Ids.nuovo();
+        this.id = id;
         this.naso = naso;
         this.zampe = zampe;
     }
@@ -37,11 +37,28 @@ public abstract class AutomaBase implements Automa {
         return id;
     }
     
+    @Override
     public char simbolo(){
         return tipo.simbolo();
     }
     
+    @Override
     public Posizione posizione(){
         return posizione;
+    }
+    
+    @Override
+    public Posizione copiaPosizione(){
+        return new Posizione(posizione.riga, posizione.colonna);
+    }
+    
+    @Override
+    public void sposta(Posizione posizione){
+        this.posizione = posizione;
+    }
+    
+    @Override
+    public String toString(){
+        return String.format("%c|%03d", simbolo(), id());
     }
 }

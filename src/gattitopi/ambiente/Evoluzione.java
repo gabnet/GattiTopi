@@ -31,11 +31,18 @@ public class Evoluzione {
     public void via() throws IOException{
         
         for (int e = 0; e < ere; e++){
+            
+            ConsoleGui.stampaEra(e, popolazione);
+            
             for(Automa automa : popolazione) {
+                ConsoleGui.stampaPrato(prato);
+                Posizione vecchia = automa.copiaPosizione();
                 Posizione nuova = automa.muovi();
                 prato.sposta(automa, nuova);
+                ConsoleGui.stampaMovimentoAutoma(automa, vecchia, nuova);
             }
-            ConsoleGui.stampa(prato);
+            
+            ConsoleGui.stampaPrato(prato);
             
             new BufferedReader(new InputStreamReader(System.in)).readLine();
         }

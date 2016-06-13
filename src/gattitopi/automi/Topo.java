@@ -17,14 +17,13 @@ import java.util.ArrayList;
 public class Topo extends AutomaBase {
 
     public Topo(Posizione posizione, NasoTopo naso, ZampeTopo zampe) {
-        super(EnumAutomi.TOPO, posizione, naso, zampe);
+        super(EnumAutomi.TOPO, Ids.nuovo(), posizione, naso, zampe);
     }
 
     @Override
     public Posizione muovi() {
-        ArrayList<Direzione> muri = zampe.muri(posizione);
+        ArrayList<Direzione> muri = zampe.muriCose(posizione);
         
-        return zampe.zitzit(naso.sniff(posizione, muri));
+        return zampe.zitzit(posizione, naso.sniff(posizione, muri));
     }
-    
 }

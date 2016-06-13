@@ -26,6 +26,7 @@ public class NasoTopo extends Naso {
         super(prato);
     }
     
+    @Override
     public Direzione sniff(Posizione posizione, ArrayList<Direzione> muri){
         
         //O

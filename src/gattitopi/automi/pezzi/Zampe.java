@@ -19,6 +19,6 @@ public abstract class Zampe extends Pezzo {
         super(prato);
     }
     
-    public abstract Posizione zitzit(Direzione direzione);
-    public abstract ArrayList<Direzione> muri(Posizione posizione);
+    public abstract Posizione zitzit(Posizione posizione, Direzione direzione);
+    public abstract ArrayList<Direzione> muriCose(Posizione posizione);
 }

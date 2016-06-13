@@ -9,6 +9,8 @@ import gattitopi.ambiente.Evoluzione;
 import gattitopi.ambiente.Popolazione;
 import gattitopi.ambiente.Prato;
 import gattitopi.automi.EnumAutomi;
+import gattitopi.consolegui.ConsoleGui;
+import java.io.IOException;
 
 /**
  *
@@ -19,11 +21,13 @@ public class GattiTopi {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
-        Prato prato = Prato.pratoVuoto(20, 20);
+        Prato prato = Prato.pratoVuoto(5, 5);
         Popolazione popolazione = new Popolazione();
-        prato.aggiungiAutomi(EnumAutomi.TOPO, 10, popolazione);
+        prato.aggiungiAutomi(EnumAutomi.TOPO, 5, popolazione);
+        
+        ConsoleGui.stampaPrato(prato);
         
         Evoluzione evo = new Evoluzione(popolazione, prato, 5);
         evo.via();

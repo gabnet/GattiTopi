@@ -14,5 +14,7 @@ public interface Automa {
     public EnumAutomi tipo();
     public char simbolo();
     public Integer id();
+    public Posizione copiaPosizione();
     public Posizione posizione();
+    public void sposta(Posizione posizione);
 }

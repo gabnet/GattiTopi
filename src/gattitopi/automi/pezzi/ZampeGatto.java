@@ -20,13 +20,12 @@ public class ZampeGatto extends Zampe {
     }
 
     @Override
-    public Posizione zitzit(Direzione direzione) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Direzione> muri(Posizione posizione) {
+    public Posizione zitzit(Posizione posizione, Direzione direzione) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public ArrayList<Direzione> muriCose(Posizione posizione) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -12,7 +12,7 @@ package gattitopi.automi;
 public class Nullo extends AutomaBase {
 
     public Nullo(Posizione posizione) {
-        super(EnumAutomi.NULLO, posizione, null, null);
+        super(EnumAutomi.NULLO, 0, posizione, null, null);
     }
 
     @Override

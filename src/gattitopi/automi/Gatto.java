@@ -17,14 +17,14 @@ import java.util.ArrayList;
 public class Gatto extends AutomaBase{
 
     public Gatto(Posizione posizione, NasoGatto naso, ZampeGatto zampe) {
-        super(EnumAutomi.GATTO, posizione, naso, zampe);
+        super(EnumAutomi.GATTO, Ids.nuovo(), posizione, naso, zampe);
     }
 
     @Override
     public Posizione muovi() {
         
-        ArrayList<Direzione> muri = zampe.muri(posizione);
+        ArrayList<Direzione> muri = zampe.muriCose(posizione);
         
-        return zampe.zitzit(naso.sniff(posizione, muri));
+        return zampe.zitzit(posizione, naso.sniff(posizione, muri));
     }
 }

@@ -35,8 +35,16 @@ public class Popolazione implements Iterable<Automa> {
         return gatti;
     }
     
+    public int quantiGatti(){
+        return gatti.size();
+    }
+    
     public Topi topi(){
         return topi;
+    }
+    
+    public int quantiTopi(){
+        return topi.size();
     }
     
     public void aggiungiAutoma(Automa automa) {

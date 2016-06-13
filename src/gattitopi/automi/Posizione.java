@@ -11,11 +11,20 @@ package gattitopi.automi;
  */
 public class Posizione {
 
-    public final int riga;
-    public final int colonna;
+    public int riga;
+    public int colonna;
 
     public Posizione(int riga, int colonna) {
         this.riga = riga;
         this.colonna = colonna;
+    }
+    
+    public Posizione copia(){
+        return new Posizione(riga, colonna);
+    }
+    
+    @Override
+    public String toString(){
+        return String.format("x%s:y%s", riga, colonna);
     }
 }

@@ -37,11 +37,13 @@ public class Prato {
     }
     
     public Automa prendi(int riga, int colonna){
+        if (riga < 0 || riga > righe - 1 || colonna < 0 || colonna > colonne - 1)
+            return new Nullo(new Posizione(riga, colonna));
         return matrice[riga][colonna];
     }
     
-    public void posiziona(Automa automa, int riga, int colonna){
-        matrice[riga][colonna] = automa;
+    public void posiziona(Automa automa, Posizione posizione){
+        matrice[posizione.riga][posizione.colonna] = automa;
     }
     
     public void aggiungiAutomi(EnumAutomi tipo, int qta, Popolazione popolazione){
@@ -57,7 +59,7 @@ public class Prato {
                             
                             Automa automa = FabbricaAutomi.crea(tipo, riga, colonna, this);
                             
-                            posiziona(automa, riga, colonna);
+                            posiziona(automa, new Posizione(riga, colonna));
                             popolazione.aggiungiAutoma(automa);
                             
                             qta--;
@@ -71,17 +73,18 @@ public class Prato {
         
         for (int riga = 0; riga < prato.righe(); riga++)
             for (int colonna = 0; colonna < prato.colonne(); colonna++)
-                prato.posiziona(new Nullo(new Posizione(riga, colonna)), riga, colonna);
+                prato.posiziona(new Nullo(new Posizione(riga, colonna)), new Posizione(riga, colonna));
         
         return prato;
     }
 
     public boolean valido(int riga, int colonna) {
-        return riga >= 0 && riga <= righe && colonna >= 0 && colonna <= colonne;
+        return riga >= 0 && riga < righe && colonna > 0 && colonna < colonne;
     }
 
     public void sposta(Automa daMuovere, Posizione nuova) {
-        posiziona(new Nullo(daMuovere.posizione()), daMuovere.posizione().riga, daMuovere.posizione().colonna);
-        posiziona(daMuovere, nuova.riga, nuova.colonna);
+        posiziona(new Nullo(daMuovere.copiaPosizione()), daMuovere.copiaPosizione());
+        posiziona(daMuovere, nuova);
+        daMuovere.sposta(nuova);
     }
 }

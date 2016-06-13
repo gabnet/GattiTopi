@@ -6,6 +6,7 @@
 package gattitopi.automi.pezzi;
 
 import gattitopi.ambiente.Prato;
+import gattitopi.automi.EnumAutomi;
 import gattitopi.automi.Posizione;
 import java.util.ArrayList;
 
@@ -19,49 +20,82 @@ public class ZampeTopo extends Zampe {
         super(prato);
     }
  
-    public Posizione zitzit(Direzione direzione) {
-        return null;
+    @Override
+    public Posizione zitzit(Posizione posizione, Direzione direzione) {
+        
+        if (Direzione.N.equals(direzione))
+            return new Posizione(posizione.riga - 1, posizione.colonna);
+        
+        if (Direzione.NE.equals(direzione))
+            return new Posizione(posizione.riga - 1, posizione.colonna + 1);
+        
+        if (Direzione.E.equals(direzione))
+            return new Posizione(posizione.riga, posizione.colonna + 1);
+        
+        if (Direzione.SE.equals(direzione))
+            return new Posizione(posizione.riga + 1, posizione.colonna + 1);
+        
+        if (Direzione.S.equals(direzione))
+            return new Posizione(posizione.riga - 1, posizione.colonna);
+        
+        if (Direzione.SO.equals(direzione))
+            return new Posizione(posizione.riga + 1, posizione.colonna - 1);
+        
+        if (Direzione.O.equals(direzione))
+            return new Posizione(posizione.riga, posizione.colonna + 1);
+        
+        if (Direzione.NO.equals(direzione))
+            return new Posizione(posizione.riga - 1, posizione.colonna - 1);
+        
+        return posizione;
     }
     
-    public ArrayList<Direzione> muri(Posizione posizione) {
+    @Override
+    public ArrayList<Direzione> muriCose(Posizione posizione) {
         ArrayList<Direzione> muri = new ArrayList<>();
         
         //O
-        if (checkPrato(posizione.riga, posizione.colonna - 1))
+        if (!checkPrato(posizione.riga, posizione.colonna - 1) || !checkLibero(posizione.riga, posizione.colonna - 1))
             muri.add(Direzione.O);
 
         //NO
-        if (checkPrato(posizione.riga - 1, posizione.colonna - 1))
+        if (!checkPrato(posizione.riga - 1, posizione.colonna - 1) || !checkLibero(posizione.riga - 1, posizione.colonna - 1))
             muri.add(Direzione.NO);
         
         //N
-        if (checkPrato(posizione.riga - 1, posizione.colonna))
+        if (!checkPrato(posizione.riga - 1, posizione.colonna) || !checkLibero(posizione.riga - 1, posizione.colonna))
              muri.add(Direzione.N);
 
         //NE
-        if (checkPrato(posizione.riga - 1, posizione.colonna + 1))
+        if (!checkPrato(posizione.riga - 1, posizione.colonna + 1) || !checkLibero(posizione.riga - 1, posizione.colonna + 1))
              muri.add(Direzione.NE);
         
         //E
-        if (checkPrato(posizione.riga, posizione.colonna + 1))
+        if (!checkPrato(posizione.riga, posizione.colonna + 1) || !checkLibero(posizione.riga, posizione.colonna + 1))
              muri.add(Direzione.E);
         
         //SE
-        if (checkPrato(posizione.riga + 1, posizione.colonna + 1))
+        if (!checkPrato(posizione.riga + 1, posizione.colonna + 1) || !checkLibero(posizione.riga + 1, posizione.colonna + 1))
              muri.add(Direzione.SE);
         
         //S
-        if (checkPrato(posizione.riga + 1, posizione.colonna))
+        if (!checkPrato(posizione.riga + 1, posizione.colonna) || !checkLibero(posizione.riga + 1, posizione.colonna))
              muri.add(Direzione.S);
         
         //SO
-        if (checkPrato(posizione.riga + 1, posizione.colonna - 1))
+        if (!checkPrato(posizione.riga + 1, posizione.colonna - 1) || !checkLibero(posizione.riga + 1, posizione.colonna - 1))
              muri.add(Direzione.SO);
         
         return muri;
     }
 
     private boolean checkPrato(int riga, int colonna) {
-        return prato.valido(riga, colonna);
+        Boolean valido = prato.valido(riga, colonna);
+        return valido;
+    }
+
+    private boolean checkLibero(int riga, int colonna) {
+        Boolean equals = EnumAutomi.NULLO.equals(prato.prendi(riga, colonna).tipo());
+        return equals;
     }
 }
