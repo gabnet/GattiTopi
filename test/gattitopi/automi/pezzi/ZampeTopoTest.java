@@ -23,19 +23,8 @@ public class ZampeTopoTest {
     private ZampeTopo sut;
     private Prato pratoFake;
     private Posizione posizioneFake;
+    private NasoTopo nasoFake;
     
-    public ZampeTopoTest() {
-    }
-    
-    @Before
-    public void setUp() {
-        posizioneFake = new Posizione(0, 1);
-        pratoFake = Prato.pratoVuoto(2, 2);
-        pratoFake.posiziona(new Topo(posizioneFake, new NasoTopo(pratoFake), sut), posizioneFake);
-        ConsoleGui.stampaPrato(pratoFake);
-        sut = new ZampeTopo(pratoFake);
-    }
-
     /**
      * Test of zitzit method, of class ZampeTopo.
      
@@ -57,10 +46,64 @@ public class ZampeTopoTest {
      */
     @Test
     public void testMuriCose() {
-        System.out.println("muriCose");
+        
+        ArrayList<Direzione> resultMuri;
+        Direzione resultSniff;
+        
+        System.out.println("muriCose 0 1");
+        posizioneFake = new Posizione(0, 1);
+        pratoFake = Prato.pratoVuoto(2, 2);
+        nasoFake = new NasoTopo(pratoFake);
+        pratoFake.posiziona(new Topo(posizioneFake, nasoFake, sut), posizioneFake);
+        ConsoleGui.stampaPrato(pratoFake);
+        sut = new ZampeTopo(pratoFake);
 
-        ArrayList<Direzione> result = sut.muriCose(posizioneFake);
-
-        assertEquals(result.size(), 5);
+        resultMuri = sut.muriCose(posizioneFake);
+        assertEquals(resultMuri.size(), 5);
+        
+        resultSniff = nasoFake.sniff(posizioneFake, resultMuri);
+        assert(!resultMuri.contains(resultSniff));
+        
+        System.out.println("muriCose 1 1");
+        posizioneFake = new Posizione(1, 1);
+        pratoFake = Prato.pratoVuoto(2, 2);
+        nasoFake = new NasoTopo(pratoFake);
+        pratoFake.posiziona(new Topo(posizioneFake, nasoFake, sut), posizioneFake);
+        ConsoleGui.stampaPrato(pratoFake);
+        sut = new ZampeTopo(pratoFake);
+        
+        resultMuri = sut.muriCose(posizioneFake);
+        assertEquals(resultMuri.size(), 5);
+        
+        resultSniff = nasoFake.sniff(posizioneFake, resultMuri);
+        assert(!resultMuri.contains(resultSniff));
+        
+        System.out.println("muriCose 1 0");
+        posizioneFake = new Posizione(1, 0);
+        pratoFake = Prato.pratoVuoto(2, 2);
+        nasoFake = new NasoTopo(pratoFake);
+        pratoFake.posiziona(new Topo(posizioneFake, nasoFake, sut), posizioneFake);
+        ConsoleGui.stampaPrato(pratoFake);
+        sut = new ZampeTopo(pratoFake);
+        
+        resultMuri = sut.muriCose(posizioneFake);
+        assertEquals(resultMuri.size(), 5);
+        
+        resultSniff = nasoFake.sniff(posizioneFake, resultMuri);
+        assert(!resultMuri.contains(resultSniff));
+        
+        System.out.println("muriCose 0 0");
+        posizioneFake = new Posizione(0, 0);
+        pratoFake = Prato.pratoVuoto(2, 2);
+        nasoFake = new NasoTopo(pratoFake);
+        pratoFake.posiziona(new Topo(posizioneFake, nasoFake, sut), posizioneFake);
+        ConsoleGui.stampaPrato(pratoFake);
+        sut = new ZampeTopo(pratoFake);
+        
+        resultMuri = sut.muriCose(posizioneFake);
+        assertEquals(resultMuri.size(), 5);
+        
+        resultSniff = nasoFake.sniff(posizioneFake, resultMuri);
+        assert(!resultMuri.contains(resultSniff));
     }
 }
