@@ -7,6 +7,8 @@ package gattitopi.automi.pezzi;
 
 import gattitopi.ambiente.Prato;
 import gattitopi.automi.Posizione;
+import gattitopi.automi.Topo;
+import gattitopi.consolegui.ConsoleGui;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,13 +22,17 @@ public class ZampeTopoTest {
     
     private ZampeTopo sut;
     private Prato pratoFake;
+    private Posizione posizioneFake;
     
     public ZampeTopoTest() {
     }
     
     @Before
     public void setUp() {
-        pratoFake = new Prato(2, 3);
+        posizioneFake = new Posizione(0, 1);
+        pratoFake = Prato.pratoVuoto(2, 2);
+        pratoFake.posiziona(new Topo(posizioneFake, new NasoTopo(pratoFake), sut), posizioneFake);
+        ConsoleGui.stampaPrato(pratoFake);
         sut = new ZampeTopo(pratoFake);
     }
 
@@ -53,8 +59,8 @@ public class ZampeTopoTest {
     public void testMuriCose() {
         System.out.println("muriCose");
 
-        ArrayList<Direzione> result = sut.muriCose(new Posizione(0, 2));
+        ArrayList<Direzione> result = sut.muriCose(posizioneFake);
 
-        assertEquals(result.size(), 2);
+        assertEquals(result.size(), 5);
     }
 }

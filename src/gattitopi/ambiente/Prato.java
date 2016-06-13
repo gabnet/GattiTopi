@@ -79,7 +79,7 @@ public class Prato {
     }
 
     public boolean valido(int riga, int colonna) {
-        return riga >= 0 && riga < righe && colonna > 0 && colonna < colonne;
+        return riga >= 0 && riga < righe && colonna >= 0 && colonna < colonne;
     }
 
     public void sposta(Automa daMuovere, Posizione nuova) {
