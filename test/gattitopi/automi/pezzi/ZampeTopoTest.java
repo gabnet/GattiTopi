@@ -10,7 +10,6 @@ import gattitopi.automi.Posizione;
 import gattitopi.automi.Topo;
 import gattitopi.consolegui.ConsoleGui;
 import java.util.ArrayList;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,23 +23,7 @@ public class ZampeTopoTest {
     private Prato pratoFake;
     private Posizione posizioneFake;
     private NasoTopo nasoFake;
-    
-    /**
-     * Test of zitzit method, of class ZampeTopo.
-     
-    @Test
-    public void testZitzit() {
-        System.out.println("zitzit");
-        Posizione posizione = null;
-        Direzione direzione = null;
-        ZampeTopo instance = null;
-        Posizione expResult = null;
-        Posizione result = instance.zitzit(posizione, direzione);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    */
+
     /**
      * Test of muriCose method, of class ZampeTopo.
      */

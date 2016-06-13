@@ -21,7 +21,7 @@ public class GattiTopi {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         
         Prato prato = Prato.pratoVuoto(5, 5);
         Popolazione popolazione = new Popolazione();
@@ -30,6 +30,10 @@ public class GattiTopi {
         ConsoleGui.stampaPrato(prato);
         
         Evoluzione evo = new Evoluzione(popolazione, prato, 5);
-        evo.via();
+        try {
+            evo.via();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
