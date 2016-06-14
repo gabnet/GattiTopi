@@ -28,23 +28,20 @@ public class Evoluzione {
         this.ere = ere;
     }
     
-    public void via() throws IOException{
+    public void via() throws IOException, InterruptedException{
         
         for (int e = 0; e < ere; e++){
             
             ConsoleGui.stampaEra(e, popolazione);
+            ConsoleGui.stampaPrato(prato);
             
             for(Automa automa : popolazione) {
-                ConsoleGui.stampaPrato(prato);
+
                 Posizione vecchia = automa.copiaPosizione();
                 Posizione nuova = automa.muovi();
                 prato.sposta(automa, nuova);
-                ConsoleGui.stampaMovimentoAutoma(automa, vecchia, nuova);
             }
-            
-            ConsoleGui.stampaPrato(prato);
-            
-            new BufferedReader(new InputStreamReader(System.in)).readLine();
+            Thread.sleep(1000);
         }
     }
 }

@@ -23,13 +23,13 @@ public class GattiTopi {
      */
     public static void main(String[] args) {
         
-        Prato prato = Prato.pratoVuoto(5, 5);
+        Prato prato = Prato.pratoVuoto(20, 20);
         Popolazione popolazione = new Popolazione();
-        prato.aggiungiAutomi(EnumAutomi.TOPO, 5, popolazione);
+        prato.aggiungiAutomi(EnumAutomi.TOPO, 2, popolazione);
         
         ConsoleGui.stampaPrato(prato);
         
-        Evoluzione evo = new Evoluzione(popolazione, prato, 5);
+        Evoluzione evo = new Evoluzione(popolazione, prato, 20);
         try {
             evo.via();
         } catch(Exception e){

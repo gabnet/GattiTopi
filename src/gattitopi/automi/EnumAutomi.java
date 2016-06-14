@@ -10,9 +10,9 @@ package gattitopi.automi;
  * @author gorig
  */
 public enum EnumAutomi {
-    GATTO('G'),
-    TOPO('T'),
-    NULLO('O');
+    GATTO('@'),
+    TOPO('§'),
+    NULLO('_');
     
     private char simbolo;
     
