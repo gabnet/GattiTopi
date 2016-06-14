@@ -36,13 +36,13 @@ public class ZampeTopo extends Zampe {
             return new Posizione(posizione.riga + 1, posizione.colonna + 1);
         
         if (Direzione.S.equals(direzione))
-            return new Posizione(posizione.riga - 1, posizione.colonna);
+            return new Posizione(posizione.riga + 1, posizione.colonna);
         
         if (Direzione.SO.equals(direzione))
             return new Posizione(posizione.riga + 1, posizione.colonna - 1);
         
         if (Direzione.O.equals(direzione))
-            return new Posizione(posizione.riga, posizione.colonna + 1);
+            return new Posizione(posizione.riga, posizione.colonna - 1);
         
         if (Direzione.NO.equals(direzione))
             return new Posizione(posizione.riga - 1, posizione.colonna - 1);
