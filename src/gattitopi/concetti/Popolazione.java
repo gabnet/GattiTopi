@@ -7,7 +7,7 @@ package gattitopi.concetti;
 
 import gattitopi.automi.Automa;
 import gattitopi.automi.Automi;
-import gattitopi.automi.EnumAutomi;
+import gattitopi.automi.EnumAutoma;
 import java.util.Iterator;
 
 /**
@@ -20,10 +20,6 @@ public class Popolazione implements Iterable<Automa> {
     
     public Popolazione(){
         automi = new Automi();
-    }
-    
-    public void aggiungiAutoma(Automa automa) {
-        automi.add(automa);
     }
 
     @Override
@@ -40,11 +36,11 @@ public class Popolazione implements Iterable<Automa> {
     }
     
     public int quantiTopi() {
-        return (int) automi.stream().filter(a -> EnumAutomi.TOPO.equals(a.tipo())).count();
+        return (int) automi.stream().filter(a -> EnumAutoma.TOPO.equals(a.tipo())).count();
     }
     
     public int quantiGatti() {
-        return (int) automi.stream().filter(a -> EnumAutomi.GATTO.equals(a.tipo())).count();
+        return (int) automi.stream().filter(a -> EnumAutoma.GATTO.equals(a.tipo())).count();
     }
 
     public Automa prendiAutoma(int indice) {

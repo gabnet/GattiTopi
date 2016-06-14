@@ -8,7 +8,7 @@ package gattitopi;
 import gattitopi.concetti.Evoluzione;
 import gattitopi.concetti.Popolazione;
 import gattitopi.concetti.Prato;
-import gattitopi.automi.EnumAutomi;
+import gattitopi.automi.EnumAutoma;
 import gattitopi.automi.FabbricaAutomi;
 import gattitopi.consolegui.ConsoleGui;
 
@@ -24,7 +24,7 @@ public class GattiTopi {
     public static void main(String[] args) {
 
         Popolazione popolazione = new Popolazione();
-        popolazione.aggiungiAutomi(FabbricaAutomi.creaAutomi(EnumAutomi.TOPO, 2));
+        popolazione.aggiungiAutomi(FabbricaAutomi.creaAutomi(EnumAutoma.TOPO, 50));
         Prato prato = Prato.pratoVuoto(20, 20);
         prato.aggiungiAutomi(popolazione);
         

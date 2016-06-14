@@ -3,25 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.automi;
+package gattitopi.automi.microautomi;
+
+import gattitopi.automi.EnumAutoma;
 
 /**
  *
  * @author gorig
  */
-public class MicroAutoma {
-    private EnumAutomi tipo;
+public class MicroAutomaBase implements MicroAutoma{
+    private EnumAutoma tipo;
     private Integer id;
     
-    public MicroAutoma(EnumAutomi tipo, Integer id) {
+    public MicroAutomaBase(EnumAutoma tipo, Integer id) {
         this.tipo = tipo;
         this.id = id;
     }
     
-    public EnumAutomi tipo(){
+    @Override
+    public EnumAutoma tipo(){
         return tipo;
     }
     
+    @Override
     public Integer id(){
         return id;
     }

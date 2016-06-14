@@ -5,11 +5,10 @@
  */
 package gattitopi.automi.pezzi.utilita;
 
-import gattitopi.automi.pezzi.Direzione;
+import gattitopi.concetti.Decisione;
+import gattitopi.concetti.Direzione;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 /**
  *

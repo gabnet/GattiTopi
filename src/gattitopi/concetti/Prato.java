@@ -6,10 +6,9 @@
 package gattitopi.concetti;
 
 import gattitopi.automi.Automa;
-import gattitopi.automi.EnumAutomi;
+import gattitopi.automi.EnumAutoma;
 import gattitopi.automi.FabbricaAutomi;
-import gattitopi.automi.MicroAutoma;
-import gattitopi.automi.Nullo;
+import gattitopi.automi.microautomi.MicroAutoma;
 import java.util.Random;
 
 /**
@@ -54,7 +53,7 @@ public class Prato {
         while (numeroAutomi > 0)
             for (int riga = 0; riga < righe() && numeroAutomi > 0; riga++)
                 for (int colonna = 0; colonna < colonne()  && numeroAutomi > 0; colonna++){
-                    if (EnumAutomi.NULLO.equals(prendi(riga, colonna).tipo())){
+                    if (EnumAutoma.NULLO.equals(prendi(riga, colonna).tipo())){
                         
                         if (dado.nextInt(righe() * colonne()) % 97 == 0){
                             

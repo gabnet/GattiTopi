@@ -5,10 +5,11 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.automi.EnumAutomi;
-import gattitopi.automi.MicroAutoma;
+import gattitopi.concetti.Direzione;
+import gattitopi.automi.EnumAutoma;
+import gattitopi.automi.microautomi.MicroAutoma;
 import gattitopi.concetti.Posizione;
-import gattitopi.automi.pezzi.utilita.Decisione;
+import gattitopi.concetti.Decisione;
 import gattitopi.automi.pezzi.utilita.ScatolaDelleDecisioni;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class NasoTopo extends Naso {
     }
 
     private boolean checkGatto(MicroAutoma microAutoma) {
-        return EnumAutomi.GATTO.equals(microAutoma.tipo());
+        return EnumAutoma.GATTO.equals(microAutoma.tipo());
     }
 
     private Direzione calcolaDirezioneInseguito(Direzione direzione, ArrayList<Direzione> muri) {

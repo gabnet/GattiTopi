@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.automi.pezzi.utilita;
-
-import gattitopi.automi.pezzi.Direzione;
+package gattitopi.concetti;
 
 /**
  *

@@ -5,6 +5,8 @@
  */
 package gattitopi.automi;
 
+import gattitopi.automi.microautomi.MicroAutomaNullo;
+import gattitopi.automi.microautomi.MicroAutoma;
 import gattitopi.concetti.Posizione;
 
 /**
@@ -13,7 +15,7 @@ import gattitopi.concetti.Posizione;
  */
 public class FabbricaAutomi {
     
-    public static Automi creaAutomi(EnumAutomi tipo, int qta){
+    public static Automi creaAutomi(EnumAutoma tipo, int qta){
         Automi automi = new Automi();
         
         for (int i = 0; i < qta; i++)
@@ -21,41 +23,21 @@ public class FabbricaAutomi {
         
         return automi;
     }
-        
-            /*
-            for (int riga = 0; riga < righe() && qta > 0; riga++)
-                for (int colonna = 0; colonna < colonne()  && qta > 0; colonna++){
-                    if (EnumAutomi.NULLO.equals(prendi(riga, colonna).tipo())){
-                        
-                        if (dado.nextInt(righe() * colonne()) % 97 == 0){
-                            
-                            Automa automa = FabbricaAutomi.crea(tipo, riga, colonna, this);
-                            
-                            automi.add(automa);
-                            
-                            posiziona(automa, new Posizione(riga, colonna));
-                            popolazione.aggiungiAutoma(automa);
-                            
-                            qta--;
-                        }
-                    }
-                }
-    }*/
     
-    public static Automa crea(EnumAutomi tipo){
+    public static Automa crea(EnumAutoma tipo){
         
         switch (tipo){
             case TOPO:
-                return new Topo(new Posizione(-1, -1));
+                return new AutomaTopo(new Posizione(-1, -1));
             case GATTO:
-                return new Gatto(new Posizione(-1, -1));
+                return new AutomaGatto(new Posizione(-1, -1));
             default:
-                return new Nullo(new Posizione(-1, -1));
+                return new AutomaNullo(new Posizione(-1, -1));
         }
     }
     
     public static MicroAutoma prendiMicroNull() {
-        return new MicroAutoma(EnumAutomi.NULLO, 0);
+        return new MicroAutomaNullo();
     }
 
 }

@@ -5,7 +5,7 @@
  */
 package gattitopi.automi.pezzi.utilita;
 
-import gattitopi.automi.pezzi.Direzione;
+import gattitopi.concetti.Direzione;
 
 /**
  *

@@ -5,13 +5,9 @@
  */
 package gattitopi.concetti;
 
-import gattitopi.concetti.Popolazione;
-import gattitopi.concetti.Prato;
 import gattitopi.automi.Automa;
 import gattitopi.consolegui.ConsoleGui;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  *

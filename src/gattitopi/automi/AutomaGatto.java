@@ -5,24 +5,26 @@
  */
 package gattitopi.automi;
 
+import gattitopi.concetti.Ids;
 import gattitopi.concetti.Posizione;
-import gattitopi.automi.pezzi.Direzione;
-import gattitopi.automi.pezzi.NasoTopo;
-import gattitopi.automi.pezzi.ZampeTopo;
+import gattitopi.concetti.Direzione;
+import gattitopi.automi.pezzi.NasoGatto;
+import gattitopi.automi.pezzi.ZampeGatto;
 import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public class Topo extends AutomaBase {
+public class AutomaGatto extends AutomaBase{
 
-    public Topo(Posizione posizione) {
-        super(EnumAutomi.TOPO, Ids.nuovo(), posizione, new NasoTopo(), new ZampeTopo());
+    public AutomaGatto(Posizione posizione) {
+        super(EnumAutoma.GATTO, Ids.nuovo(), posizione, new NasoGatto(), new ZampeGatto());
     }
 
     @Override
     public Posizione muovi() {
+        
         ArrayList<Direzione> muri = zampe.muriCose(posizione);
         
         return zampe.zitzit(posizione, naso.sniff(posizione, muri));

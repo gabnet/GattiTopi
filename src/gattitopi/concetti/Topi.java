@@ -5,13 +5,13 @@
  */
 package gattitopi.concetti;
 
-import gattitopi.automi.Topo;
+import gattitopi.automi.AutomaTopo;
 import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public class Topi extends ArrayList<Topo>{
+public class Topi extends ArrayList<AutomaTopo>{
     
 }

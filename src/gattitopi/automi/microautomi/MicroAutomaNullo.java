@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.concetti;
+package gattitopi.automi.microautomi;
 
-import gattitopi.automi.AutomaGatto;
-import java.util.ArrayList;
+import gattitopi.automi.EnumAutoma;
 
 /**
  *
  * @author gorig
  */
-public class Gatti extends ArrayList<AutomaGatto>{
-    
+public class MicroAutomaNullo extends MicroAutomaBase {
+
+    public MicroAutomaNullo() {
+        super(EnumAutoma.NULLO, 0);
+    }
 }

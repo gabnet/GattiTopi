@@ -5,6 +5,7 @@
  */
 package gattitopi.automi.pezzi;
 
+import gattitopi.concetti.Direzione;
 import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 

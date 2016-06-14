@@ -5,7 +5,8 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.automi.EnumAutomi;
+import gattitopi.concetti.Direzione;
+import gattitopi.automi.EnumAutoma;
 import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 
@@ -89,6 +90,6 @@ public class ZampeTopo extends Zampe {
     }
 
     private boolean checkLibero(int riga, int colonna) {
-        return EnumAutomi.NULLO.equals(prato.prendi(riga, colonna).tipo());
+        return EnumAutoma.NULLO.equals(prato.prendi(riga, colonna).tipo());
     }
 }

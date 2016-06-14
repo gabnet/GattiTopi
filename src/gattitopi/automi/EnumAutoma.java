@@ -5,20 +5,22 @@
  */
 package gattitopi.automi;
 
-import gattitopi.concetti.Posizione;
-
 /**
  *
  * @author gorig
  */
-public class Nullo extends AutomaBase {
-
-    public Nullo(Posizione posizione) {
-        super(EnumAutomi.NULLO, 0, posizione, null, null);
+public enum EnumAutoma {
+    GATTO('@'),
+    TOPO('§'),
+    NULLO('_');
+    
+    private char simbolo;
+    
+    private EnumAutoma(char c){
+        this.simbolo = c;
     }
-
-    @Override
-    public Posizione muovi() {
-        return posizione;
+    
+    public char simbolo() {
+        return simbolo;
     }
 }
