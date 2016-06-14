@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.ambiente;
+package gattitopi.concetti;
 
+import gattitopi.concetti.Popolazione;
+import gattitopi.concetti.Prato;
 import gattitopi.automi.Automa;
-import gattitopi.automi.Posizione;
 import gattitopi.consolegui.ConsoleGui;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,7 +40,8 @@ public class Evoluzione {
 
                 Posizione vecchia = automa.copiaPosizione();
                 Posizione nuova = automa.muovi();
-                prato.sposta(automa, nuova);
+                automa.setPosizione(nuova);
+                prato.sposta(automa.prendiMicro(), vecchia, nuova);
             }
             Thread.sleep(1000);
         }

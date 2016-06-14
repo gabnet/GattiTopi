@@ -5,6 +5,8 @@
  */
 package gattitopi.automi;
 
+import gattitopi.concetti.Posizione;
+import gattitopi.concetti.Prato;
 import gattitopi.automi.pezzi.Naso;
 import gattitopi.automi.pezzi.Zampe;
 
@@ -28,18 +30,34 @@ public abstract class AutomaBase implements Automa {
         this.naso = naso;
         this.zampe = zampe;
     }
+        
+    @Override
+    public void setPosizione(Posizione corrente) {
+        this.posizione = corrente;
+    }
+    
+    @Override
+    public void setPrato(Prato prato){
+        naso.setPrato(prato);
+        zampe.setPrato(prato);
+    }
+    
+    @Override
+    public MicroAutoma prendiMicro(){
+        return new MicroAutoma(tipo, id);
+    }
+    
+    
+    
+    
 
+    
     public EnumAutomi tipo(){
         return tipo;
     }
 
     public Integer id() {
         return id;
-    }
-    
-    @Override
-    public char simbolo(){
-        return tipo.simbolo();
     }
     
     @Override
@@ -55,10 +73,5 @@ public abstract class AutomaBase implements Automa {
     @Override
     public void sposta(Posizione posizione){
         this.posizione = posizione;
-    }
-    
-    @Override
-    public String toString(){
-        return String.format("%c|%03d", simbolo(), id());
     }
 }

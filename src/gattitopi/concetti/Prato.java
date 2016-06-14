@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.ambiente;
+package gattitopi.concetti;
 
 import gattitopi.automi.Automa;
 import gattitopi.automi.EnumAutomi;
 import gattitopi.automi.FabbricaAutomi;
+import gattitopi.automi.MicroAutoma;
 import gattitopi.automi.Nullo;
-import gattitopi.automi.Posizione;
 import java.util.Random;
 
 /**
@@ -18,12 +18,12 @@ import java.util.Random;
  */
 public class Prato {
     
-    private final Automa[][] matrice;
+    private final MicroAutoma[][] matrice;
     private final int righe;
     private final int colonne;
     
     public Prato(int maxX, int maxY) {
-        matrice = new Automa[maxY][maxY];
+        matrice = new MicroAutoma[maxY][maxY];
         righe = maxX;
         colonne = maxY;
     }
@@ -36,33 +36,34 @@ public class Prato {
         return colonne;
     }
     
-    public Automa prendi(int riga, int colonna){
+    public MicroAutoma prendi(int riga, int colonna){
         if (riga < 0 || riga > righe - 1 || colonna < 0 || colonna > colonne - 1)
-            return new Nullo(new Posizione(riga, colonna));
+            return FabbricaAutomi.prendiMicroNull();
         return matrice[riga][colonna];
     }
     
-    public void posiziona(Automa automa, Posizione posizione){
-        matrice[posizione.riga][posizione.colonna] = automa;
+    public void posiziona(MicroAutoma microAutoma, Posizione posizione){
+        matrice[posizione.riga][posizione.colonna] = microAutoma;
     }
     
-    public void aggiungiAutomi(EnumAutomi tipo, int qta, Popolazione popolazione){
+    public void aggiungiAutomi(Popolazione popolazione){
         
         Random dado = new Random();
+        int numeroAutomi = popolazione.quantiAutomi();
         
-        while (qta > 0)
-            for (int riga = 0; riga < righe() && qta > 0; riga++)
-                for (int colonna = 0; colonna < colonne()  && qta > 0; colonna++){
+        while (numeroAutomi > 0)
+            for (int riga = 0; riga < righe() && numeroAutomi > 0; riga++)
+                for (int colonna = 0; colonna < colonne()  && numeroAutomi > 0; colonna++){
                     if (EnumAutomi.NULLO.equals(prendi(riga, colonna).tipo())){
                         
                         if (dado.nextInt(righe() * colonne()) % 97 == 0){
                             
-                            Automa automa = FabbricaAutomi.crea(tipo, riga, colonna, this);
+                            Automa automa = popolazione.prendiAutoma(numeroAutomi - 1);
+                            automa.setPosizione(new Posizione(riga, colonna));
+                            automa.setPrato(this);
+                            posiziona(automa.prendiMicro(), automa.copiaPosizione());
                             
-                            posiziona(automa, new Posizione(riga, colonna));
-                            popolazione.aggiungiAutoma(automa);
-                            
-                            qta--;
+                            numeroAutomi--;
                         }
                     }
                 }
@@ -73,18 +74,17 @@ public class Prato {
         
         for (int riga = 0; riga < prato.righe(); riga++)
             for (int colonna = 0; colonna < prato.colonne(); colonna++)
-                prato.posiziona(new Nullo(new Posizione(riga, colonna)), new Posizione(riga, colonna));
+                prato.posiziona(FabbricaAutomi.prendiMicroNull(), new Posizione(riga, colonna));
         
         return prato;
     }
-
+    
     public boolean valido(int riga, int colonna) {
         return riga >= 0 && riga < righe && colonna >= 0 && colonna < colonne;
     }
 
-    public void sposta(Automa daMuovere, Posizione nuova) {
-        posiziona(new Nullo(daMuovere.copiaPosizione()), daMuovere.copiaPosizione());
+    public void sposta(MicroAutoma daMuovere, Posizione vecchia, Posizione nuova) {
+        posiziona(FabbricaAutomi.prendiMicroNull(), vecchia);
         posiziona(daMuovere, nuova);
-        daMuovere.sposta(nuova);
     }
 }

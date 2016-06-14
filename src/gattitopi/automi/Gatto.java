@@ -5,6 +5,7 @@
  */
 package gattitopi.automi;
 
+import gattitopi.concetti.Posizione;
 import gattitopi.automi.pezzi.Direzione;
 import gattitopi.automi.pezzi.NasoGatto;
 import gattitopi.automi.pezzi.ZampeGatto;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
  */
 public class Gatto extends AutomaBase{
 
-    public Gatto(Posizione posizione, NasoGatto naso, ZampeGatto zampe) {
-        super(EnumAutomi.GATTO, Ids.nuovo(), posizione, naso, zampe);
+    public Gatto(Posizione posizione) {
+        super(EnumAutomi.GATTO, Ids.nuovo(), posizione, new NasoGatto(), new ZampeGatto());
     }
 
     @Override

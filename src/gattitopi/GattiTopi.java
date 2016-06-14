@@ -5,12 +5,12 @@
  */
 package gattitopi;
 
-import gattitopi.ambiente.Evoluzione;
-import gattitopi.ambiente.Popolazione;
-import gattitopi.ambiente.Prato;
+import gattitopi.concetti.Evoluzione;
+import gattitopi.concetti.Popolazione;
+import gattitopi.concetti.Prato;
 import gattitopi.automi.EnumAutomi;
+import gattitopi.automi.FabbricaAutomi;
 import gattitopi.consolegui.ConsoleGui;
-import java.io.IOException;
 
 /**
  *
@@ -22,10 +22,11 @@ public class GattiTopi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Prato prato = Prato.pratoVuoto(20, 20);
+
         Popolazione popolazione = new Popolazione();
-        prato.aggiungiAutomi(EnumAutomi.TOPO, 2, popolazione);
+        popolazione.aggiungiAutomi(FabbricaAutomi.creaAutomi(EnumAutomi.TOPO, 2));
+        Prato prato = Prato.pratoVuoto(20, 20);
+        prato.aggiungiAutomi(popolazione);
         
         ConsoleGui.stampaPrato(prato);
         

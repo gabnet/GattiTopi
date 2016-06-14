@@ -5,8 +5,8 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
-import gattitopi.automi.Posizione;
+import gattitopi.concetti.Prato;
+import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 
 /**
@@ -14,11 +14,6 @@ import java.util.ArrayList;
  * @author gorig
  */
 public abstract class Zampe extends Pezzo {
-    
-    public Zampe(Prato prato) {
-        super(prato);
-    }
-    
     public abstract Posizione zitzit(Posizione posizione, Direzione direzione);
     public abstract ArrayList<Direzione> muriCose(Posizione posizione);
 }

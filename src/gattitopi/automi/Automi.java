@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.automi.pezzi;
+package gattitopi.automi;
 
-import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public abstract class Naso extends Pezzo {
-    public abstract Direzione sniff(Posizione posizione, ArrayList<Direzione> muri);
+public class Automi extends ArrayList<Automa> {
+    
 }

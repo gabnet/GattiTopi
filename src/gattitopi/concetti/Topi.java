@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.ambiente;
+package gattitopi.concetti;
 
 import gattitopi.automi.Topo;
 import java.util.ArrayList;

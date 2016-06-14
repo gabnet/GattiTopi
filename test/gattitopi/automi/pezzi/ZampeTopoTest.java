@@ -5,8 +5,8 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
-import gattitopi.automi.Posizione;
+import gattitopi.concetti.Prato;
+import gattitopi.concetti.Posizione;
 import gattitopi.automi.Topo;
 import gattitopi.consolegui.ConsoleGui;
 import java.util.ArrayList;

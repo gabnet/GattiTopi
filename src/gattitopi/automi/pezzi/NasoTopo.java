@@ -5,10 +5,9 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
-import gattitopi.automi.Automa;
 import gattitopi.automi.EnumAutomi;
-import gattitopi.automi.Posizione;
+import gattitopi.automi.MicroAutoma;
+import gattitopi.concetti.Posizione;
 import gattitopi.automi.pezzi.utilita.Decisione;
 import gattitopi.automi.pezzi.utilita.ScatolaDelleDecisioni;
 import java.util.ArrayDeque;
@@ -21,10 +20,6 @@ import java.util.Random;
  * @author gorig
  */
 public class NasoTopo extends Naso {
-    
-    public NasoTopo(Prato prato) {
-        super(prato);
-    }
     
     @Override
     public Direzione sniff(Posizione posizione, ArrayList<Direzione> muri){
@@ -64,8 +59,8 @@ public class NasoTopo extends Naso {
         return calcolaDirezioneLibero(muri);
     }
 
-    private boolean checkGatto(Automa automa) {
-        return EnumAutomi.GATTO.equals(automa.tipo());
+    private boolean checkGatto(MicroAutoma microAutoma) {
+        return EnumAutomi.GATTO.equals(microAutoma.tipo());
     }
 
     private Direzione calcolaDirezioneInseguito(Direzione direzione, ArrayList<Direzione> muri) {

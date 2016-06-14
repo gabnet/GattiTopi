@@ -5,6 +5,9 @@
  */
 package gattitopi.automi;
 
+import gattitopi.concetti.Posizione;
+import gattitopi.concetti.Prato;
+
 /**
  *
  * @author gorig
@@ -12,9 +15,11 @@ package gattitopi.automi;
 public interface Automa {
     public Posizione muovi();
     public EnumAutomi tipo();
-    public char simbolo();
     public Integer id();
     public Posizione copiaPosizione();
     public Posizione posizione();
     public void sposta(Posizione posizione);
+    public void setPosizione(Posizione corrente);
+    public void setPrato(Prato aThis);
+    public MicroAutoma prendiMicro();
 }

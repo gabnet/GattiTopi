@@ -5,9 +5,8 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
 import gattitopi.automi.EnumAutomi;
-import gattitopi.automi.Posizione;
+import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 
 /**
@@ -15,11 +14,7 @@ import java.util.ArrayList;
  * @author gorig
  */
 public class ZampeTopo extends Zampe {
-
-    public ZampeTopo(Prato prato) {
-        super(prato);
-    }
- 
+    
     @Override
     public Posizione zitzit(Posizione posizione, Direzione direzione) {
         
@@ -90,12 +85,10 @@ public class ZampeTopo extends Zampe {
     }
 
     private boolean checkPrato(int riga, int colonna) {
-        Boolean valido = prato.valido(riga, colonna);
-        return valido;
+        return prato.valido(riga, colonna);
     }
 
     private boolean checkLibero(int riga, int colonna) {
-        Boolean equals = EnumAutomi.NULLO.equals(prato.prendi(riga, colonna).tipo());
-        return equals;
+        return EnumAutomi.NULLO.equals(prato.prendi(riga, colonna).tipo());
     }
 }

@@ -5,7 +5,7 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
+import gattitopi.concetti.Prato;
 
 /**
  *
@@ -14,7 +14,7 @@ import gattitopi.ambiente.Prato;
 public class Pezzo {
     protected Prato prato;
     
-    public Pezzo(Prato prato){
+    public void setPrato(Prato prato){
         this.prato = prato;
     }
 }

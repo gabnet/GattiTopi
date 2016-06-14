@@ -5,8 +5,8 @@
  */
 package gattitopi.automi.pezzi;
 
-import gattitopi.ambiente.Prato;
-import gattitopi.automi.Posizione;
+import gattitopi.concetti.Prato;
+import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 
 /**
@@ -14,11 +14,6 @@ import java.util.ArrayList;
  * @author gorig
  */
 public class ZampeGatto extends Zampe {
-
-    public ZampeGatto(Prato prato) {
-        super(prato);
-    }
-
     @Override
     public Posizione zitzit(Posizione posizione, Direzione direzione) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

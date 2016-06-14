@@ -5,10 +5,10 @@
  */
 package gattitopi.consolegui;
 
-import gattitopi.ambiente.Popolazione;
-import gattitopi.ambiente.Prato;
+import gattitopi.concetti.Popolazione;
+import gattitopi.concetti.Prato;
 import gattitopi.automi.Automa;
-import gattitopi.automi.Posizione;
+import gattitopi.concetti.Posizione;
 
 /**
  *

@@ -5,6 +5,8 @@
  */
 package gattitopi.automi;
 
+import gattitopi.concetti.Posizione;
+
 /**
  *
  * @author gorig

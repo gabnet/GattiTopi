@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gattitopi.ambiente;
+package gattitopi.concetti;
 
 import gattitopi.automi.Automa;
-import gattitopi.automi.Gatto;
-import gattitopi.automi.Topo;
+import gattitopi.automi.Automi;
+import gattitopi.automi.EnumAutomi;
+import java.util.Iterator;
 
 /**
  *
@@ -15,51 +16,38 @@ import gattitopi.automi.Topo;
  */
 public class Popolazione implements Iterable<Automa> {
     
-    private final Topi topi;
-    private final Gatti gatti;
+    private Automi automi;
     
     public Popolazione(){
-        topi = new Topi();
-        gatti = new Gatti();
-    }
-    
-    private void aggiungiGatto(Gatto gatto){
-        gatti.add(gatto);
-    }
-    
-    private void aggiungiTopo(Topo topo){
-        topi.add(topo);
-    }
-    
-    public Gatti gatti(){
-        return gatti;
-    }
-    
-    public int quantiGatti(){
-        return gatti.size();
-    }
-    
-    public Topi topi(){
-        return topi;
-    }
-    
-    public int quantiTopi(){
-        return topi.size();
+        automi = new Automi();
     }
     
     public void aggiungiAutoma(Automa automa) {
-        switch (automa.tipo()){
-            case TOPO:
-                aggiungiTopo((Topo) automa);
-                break;
-            case GATTO:
-                aggiungiGatto((Gatto) automa);
-                break;
-        }
+        automi.add(automa);
     }
 
     @Override
-    public IteratorePopolazione iterator() {
-        return new IteratorePopolazione(topi, gatti);
+    public Iterator<Automa> iterator() {
+        return automi.iterator();
+    }
+
+    public void aggiungiAutomi(Automi automi) {
+        this.automi.addAll(automi);
+    }
+
+    public int quantiAutomi() {
+        return automi.size();
+    }
+    
+    public int quantiTopi() {
+        return (int) automi.stream().filter(a -> EnumAutomi.TOPO.equals(a.tipo())).count();
+    }
+    
+    public int quantiGatti() {
+        return (int) automi.stream().filter(a -> EnumAutomi.GATTO.equals(a.tipo())).count();
+    }
+
+    public Automa prendiAutoma(int indice) {
+        return automi.get(indice);
     }
 }
