@@ -7,7 +7,6 @@ package gattitopi.automi.pezzi;
 
 import gattitopi.concetti.Direzione;
 import gattitopi.concetti.Posizione;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,11 +15,6 @@ import java.util.ArrayList;
 public class ZampeGatto extends Zampe {
     @Override
     public Posizione zitzit(Posizione posizione, Direzione direzione) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public ArrayList<Direzione> muriCose(Posizione posizione) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

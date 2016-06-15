@@ -10,6 +10,7 @@ import gattitopi.automi.microautomi.MicroAutoma;
 import gattitopi.concetti.Posizione;
 import gattitopi.concetti.Prato;
 import gattitopi.automi.pezzi.Naso;
+import gattitopi.automi.pezzi.Occhi;
 import gattitopi.automi.pezzi.Zampe;
 
 /**
@@ -24,13 +25,15 @@ public abstract class AutomaBase implements Automa {
     
     protected final Naso naso;
     protected final Zampe zampe;
+    protected final Occhi occhi;
 
-    public AutomaBase(EnumAutoma tipo, Integer id, Posizione posizione, Naso naso, Zampe zampe) {
+    public AutomaBase(EnumAutoma tipo, Integer id, Posizione posizione, Naso naso, Zampe zampe, Occhi occhi) {
         this.tipo = tipo;
         this.posizione = posizione;
         this.id = id;
         this.naso = naso;
         this.zampe = zampe;
+        this.occhi = occhi;
     }
         
     @Override
@@ -42,6 +45,7 @@ public abstract class AutomaBase implements Automa {
     public void setPrato(Prato prato){
         naso.setPrato(prato);
         zampe.setPrato(prato);
+        occhi.setPrato(prato);
     }
     
     @Override

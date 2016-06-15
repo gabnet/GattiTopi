@@ -9,6 +9,7 @@ import gattitopi.concetti.Ids;
 import gattitopi.concetti.Posizione;
 import gattitopi.concetti.Direzione;
 import gattitopi.automi.pezzi.NasoGatto;
+import gattitopi.automi.pezzi.OcchiGatto;
 import gattitopi.automi.pezzi.ZampeGatto;
 import java.util.ArrayList;
 
@@ -19,13 +20,13 @@ import java.util.ArrayList;
 public class AutomaGatto extends AutomaBase{
 
     public AutomaGatto(Posizione posizione) {
-        super(EnumAutoma.GATTO, Ids.nuovo(), posizione, new NasoGatto(), new ZampeGatto());
+        super(EnumAutoma.GATTO, Ids.nuovo(), posizione, new NasoGatto(), new ZampeGatto(), new OcchiGatto());
     }
 
     @Override
     public Posizione muovi() {
         
-        ArrayList<Direzione> muri = zampe.muriCose(posizione);
+        ArrayList<Direzione> muri = occhi.guarda(posizione);
         
         return zampe.zitzit(posizione, naso.sniff(posizione, muri));
     }

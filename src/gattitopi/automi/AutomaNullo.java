@@ -14,7 +14,7 @@ import gattitopi.concetti.Posizione;
 public class AutomaNullo extends AutomaBase {
 
     public AutomaNullo(Posizione posizione) {
-        super(EnumAutoma.NULLO, 0, posizione, null, null);
+        super(EnumAutoma.NULLO, 0, posizione, null, null, null);
     }
 
     @Override

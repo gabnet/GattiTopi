@@ -7,11 +7,17 @@ package gattitopi.automi.pezzi;
 
 import gattitopi.concetti.Direzione;
 import gattitopi.concetti.Posizione;
+import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public abstract class Zampe extends Pezzo {
-    public abstract Posizione zitzit(Posizione posizione, Direzione direzione);
+public class OcchiGatto extends Occhi{
+
+    @Override
+    public ArrayList<Direzione> guarda(Posizione posizione) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

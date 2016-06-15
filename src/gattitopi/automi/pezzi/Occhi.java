@@ -7,11 +7,12 @@ package gattitopi.automi.pezzi;
 
 import gattitopi.concetti.Direzione;
 import gattitopi.concetti.Posizione;
+import java.util.ArrayList;
 
 /**
  *
  * @author gorig
  */
-public abstract class Zampe extends Pezzo {
-    public abstract Posizione zitzit(Posizione posizione, Direzione direzione);
+public abstract class Occhi extends Pezzo{
+    public abstract ArrayList<Direzione> guarda(Posizione posizione);
 }
