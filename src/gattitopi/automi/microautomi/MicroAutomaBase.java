@@ -12,8 +12,8 @@ import gattitopi.automi.EnumAutoma;
  * @author gorig
  */
 public class MicroAutomaBase implements MicroAutoma{
-    private EnumAutoma tipo;
-    private Integer id;
+    protected EnumAutoma tipo;
+    protected Integer id;
     
     public MicroAutomaBase(EnumAutoma tipo, Integer id) {
         this.tipo = tipo;
