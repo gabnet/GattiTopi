@@ -17,12 +17,12 @@ import java.util.Random;
  */
 public class Prato {
     
-    private final MicroAutoma[][] matrice;
+    protected MicroAutoma[][] matrice;
     private final int righe;
     private final int colonne;
     
     public Prato(int maxX, int maxY) {
-        matrice = new MicroAutoma[maxY][maxY];
+        matrice = new MicroAutoma[maxX][maxY];
         righe = maxX;
         colonne = maxY;
     }

@@ -24,7 +24,7 @@ public class GattiTopi {
     public static void main(String[] args) {
 
         Popolazione popolazione = new Popolazione();
-        popolazione.aggiungiAutomi(FabbricaAutomi.creaAutomi(EnumAutoma.TOPO, 50));
+        popolazione.aggiungiAutomi(FabbricaAutomi.creaAutomi(EnumAutoma.TOPO, 5));
         Prato prato = Prato.pratoVuoto(20, 20);
         prato.aggiungiAutomi(popolazione);
         
