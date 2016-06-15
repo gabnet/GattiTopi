@@ -27,6 +27,8 @@ public class AutomaTopo extends AutomaBase {
     public Posizione muovi() {
         ArrayList<Direzione> muri = occhi.guarda(posizione);
         
-        return zampe.zitzit(posizione, naso.sniff(posizione, muri));
+        Direzione direzione = naso.sniff(posizione, muri);
+        
+        return zampe.zitzit(posizione, direzione);
     }
 }
