@@ -36,8 +36,12 @@ public class FabbricaAutomi {
         }
     }
     
-    public static MicroAutoma prendiMicroNull() {
+    public static MicroAutoma prendiMicroNullo() {
         return new MicroAutomaNullo();
     }
-
+    
+    public static MicroAutoma prendiMicroNullo(Integer id) {
+        return new MicroAutomaNullo(id);
+    }
 }
+

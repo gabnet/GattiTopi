@@ -16,4 +16,8 @@ public class MicroAutomaNullo extends MicroAutomaBase {
     public MicroAutomaNullo() {
         super(EnumAutoma.NULLO, 0);
     }
+    
+    public MicroAutomaNullo(Integer id) {
+        super(EnumAutoma.NULLO, id);
+    }
 }

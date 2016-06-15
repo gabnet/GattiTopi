@@ -7,6 +7,7 @@ package gattitopi.concetti;
 
 import gattitopi.automi.FabbricaAutomi;
 import gattitopi.consolegui.ConsoleGui;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -24,18 +25,26 @@ public class IntornoTest {
     @Test
     public void testCreaIntorno() {
 
+        System.out.println("Test prato piccolo");
         testaPrato(2, 1, new Posizione(1, 0), 1);
         testaPrato(2, 1, new Posizione(0, 0), 1);
         testaPrato(2, 1, new Posizione(0, 0), 2);
+        
+        System.out.println("Test prato medio");
+        testaPrato(3, 3, new Posizione(0, 1), 1);
+        testaPrato(3, 3, new Posizione(0, 1), 2);
+        testaPrato(3, 3, new Posizione(0, 0), 1);
+        testaPrato(3, 3, new Posizione(0, 0), 2);
+        testaPrato(3, 3, new Posizione(3, 3), 1);
+        testaPrato(3, 3, new Posizione(3, 3), 2);
         /*
-        testaPrato(1, 1);
-        testaPrato(2, 2);
-        testaPrato(3, 3);
         testaPrato(3, 6);
         testaPrato(4, 4);
         testaPrato(4, 1);
         testaPrato(5, 5);
 */
+        
+        assert true;
     }
     
     private void testaPrato(int righe, int colonne, Posizione centroIntorno, int raggio){
@@ -52,7 +61,7 @@ public class IntornoTest {
         
         for (int riga = 0; riga < righe; riga++)
             for (int colonna = 0; colonna < colonne; colonna++)
-                result.posiziona(FabbricaAutomi.prendiMicroNull(), new Posizione(riga, colonna));
+                result.posiziona(FabbricaAutomi.prendiMicroNullo(Ids.nuovo()), new Posizione(riga, colonna));
         
         return result;
     }

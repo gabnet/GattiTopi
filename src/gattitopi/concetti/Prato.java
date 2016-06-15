@@ -37,7 +37,7 @@ public class Prato {
     
     public MicroAutoma prendi(int riga, int colonna){
         if (riga < 0 || riga > righe - 1 || colonna < 0 || colonna > colonne - 1)
-            return FabbricaAutomi.prendiMicroNull();
+            return null;
         return matrice[riga][colonna];
     }
     
@@ -73,7 +73,7 @@ public class Prato {
         
         for (int riga = 0; riga < prato.righe(); riga++)
             for (int colonna = 0; colonna < prato.colonne(); colonna++)
-                prato.posiziona(FabbricaAutomi.prendiMicroNull(), new Posizione(riga, colonna));
+                prato.posiziona(FabbricaAutomi.prendiMicroNullo(), new Posizione(riga, colonna));
         
         return prato;
     }
@@ -83,26 +83,26 @@ public class Prato {
     }
 
     public void sposta(MicroAutoma daMuovere, Posizione vecchia, Posizione nuova) {
-        posiziona(FabbricaAutomi.prendiMicroNull(), vecchia);
+        posiziona(FabbricaAutomi.prendiMicroNullo(), vecchia);
         posiziona(daMuovere, nuova);
     }
     
     public Intorno creaIntorno(Posizione posizione, int raggio){
-        int limiteSopra = posizione.riga - raggio < 0 ? 0 : posizione.riga - raggio;
+        int limiteSopra = posizione.riga - raggio - 1 < 0 ? 0 : posizione.riga - raggio - 1;
         int limiteSotto = posizione.riga + raggio > righe() - 1 ? righe() - 1 : posizione.riga + raggio;
         
-        int limiteSinistro = posizione.colonna - raggio < 0 ? 0 : posizione.colonna - raggio;
+        int limiteSinistro = posizione.colonna - raggio - 1 < 0 ? 0 : posizione.colonna - raggio - 1;
         int limiteDestro = posizione.colonna + raggio > colonne() - 1 ? colonne() - 1 : posizione.colonna + raggio;
         
-        int latoOrizzontale = limiteSinistro - limiteDestro + 1;
-        int latoVerticale = limiteSotto - limiteSopra + 1;
+        int numeroColonne = limiteDestro - limiteSinistro + 1;
+        int numeroRighe = limiteSotto - limiteSopra + 1;
         
-        MicroAutoma[][] nuovaMatrice = new MicroAutoma[latoVerticale][latoOrizzontale];
+        MicroAutoma[][] nuovaMatrice = new MicroAutoma[numeroRighe][numeroColonne];
         
-        for (int riga = 0; riga < latoVerticale; riga++ )
-            for (int colonna = 0; colonna < latoOrizzontale; colonna++)
-                nuovaMatrice[riga][colonna] = prendi(riga, colonna);
+        for (int riga = 0; riga < numeroRighe; riga++ )
+            for (int colonna = 0; colonna < numeroColonne; colonna++)
+                nuovaMatrice[riga][colonna] = prendi(riga + limiteSopra, colonna + limiteSinistro);
         
-        return new Intorno(latoVerticale, latoOrizzontale, nuovaMatrice);
+        return new Intorno(numeroRighe, numeroColonne, nuovaMatrice);
     }
 }

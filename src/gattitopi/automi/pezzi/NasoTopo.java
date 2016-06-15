@@ -61,7 +61,7 @@ public class NasoTopo extends Naso {
     }
 
     private boolean checkGatto(MicroAutoma microAutoma) {
-        return EnumAutoma.GATTO.equals(microAutoma.tipo());
+        return microAutoma != null && EnumAutoma.GATTO.equals(microAutoma.tipo());
     }
 
     private Direzione calcolaDirezioneInseguito(Direzione direzione, ArrayList<Direzione> muri) {

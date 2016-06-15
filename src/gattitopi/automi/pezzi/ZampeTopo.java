@@ -90,6 +90,6 @@ public class ZampeTopo extends Zampe {
     }
 
     private boolean checkLibero(int riga, int colonna) {
-        return EnumAutoma.NULLO.equals(prato.prendi(riga, colonna).tipo());
+        return prato.prendi(riga, colonna) != null && EnumAutoma.NULLO.equals(prato.prendi(riga, colonna).tipo());
     }
 }
