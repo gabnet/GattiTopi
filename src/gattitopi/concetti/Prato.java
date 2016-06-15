@@ -86,4 +86,23 @@ public class Prato {
         posiziona(FabbricaAutomi.prendiMicroNull(), vecchia);
         posiziona(daMuovere, nuova);
     }
+    
+    public Intorno creaIntorno(Posizione posizione, int raggio){
+        int limiteSopra = posizione.riga - raggio < 0 ? 0 : posizione.riga - raggio;
+        int limiteSotto = posizione.riga + raggio > righe() - 1 ? righe() - 1 : posizione.riga + raggio;
+        
+        int limiteSinistro = posizione.colonna - raggio < 0 ? 0 : posizione.colonna - raggio;
+        int limiteDestro = posizione.colonna + raggio > colonne() - 1 ? colonne() - 1 : posizione.colonna + raggio;
+        
+        int latoOrizzontale = limiteSinistro - limiteDestro + 1;
+        int latoVerticale = limiteSotto - limiteSopra + 1;
+        
+        MicroAutoma[][] nuovaMatrice = new MicroAutoma[latoVerticale][latoOrizzontale];
+        
+        for (int riga = 0; riga < latoVerticale; riga++ )
+            for (int colonna = 0; colonna < latoOrizzontale; colonna++)
+                nuovaMatrice[riga][colonna] = prendi(riga, colonna);
+        
+        return new Intorno(latoVerticale, latoOrizzontale, nuovaMatrice);
+    }
 }

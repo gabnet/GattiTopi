@@ -7,12 +7,7 @@ package gattitopi.concetti;
 
 import gattitopi.automi.FabbricaAutomi;
 import gattitopi.consolegui.ConsoleGui;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -21,6 +16,7 @@ import static org.junit.Assert.*;
 public class IntornoTest {
     
     private Prato pratoTest;
+    private Intorno intornoTest;
     
     /**
      * Test of creaIntorno method, of class Intorno.
@@ -28,7 +24,10 @@ public class IntornoTest {
     @Test
     public void testCreaIntorno() {
 
-        testaPrato(2, 1);
+        testaPrato(2, 1, new Posizione(1, 0), 1);
+        testaPrato(2, 1, new Posizione(0, 0), 1);
+        testaPrato(2, 1, new Posizione(0, 0), 2);
+        /*
         testaPrato(1, 1);
         testaPrato(2, 2);
         testaPrato(3, 3);
@@ -36,13 +35,16 @@ public class IntornoTest {
         testaPrato(4, 4);
         testaPrato(4, 1);
         testaPrato(5, 5);
-
+*/
     }
     
-    private void testaPrato(int righe, int colonne){
-        System.out.printf("creaIntorno x: %s y: %s\n", righe, colonne);
+    private void testaPrato(int righe, int colonne, Posizione centroIntorno, int raggio){
+        System.out.printf("crea Prato x: %s y: %s\n", righe, colonne);
         pratoTest = riempiPrato(righe, colonne);
         ConsoleGui.stampaPrato(pratoTest);
+        System.out.printf("crea intorno x: %s y: %s centro: %s, %s raggio: %s\n", righe, colonne, centroIntorno.riga, centroIntorno.colonna, raggio);
+        intornoTest = pratoTest.creaIntorno(centroIntorno, raggio);
+        ConsoleGui.stampaPrato(intornoTest);
     }
 
     private Prato riempiPrato(int righe, int colonne) {
