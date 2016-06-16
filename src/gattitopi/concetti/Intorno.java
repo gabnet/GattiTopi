@@ -5,7 +5,11 @@
  */
 package gattitopi.concetti;
 
+import gattitopi.automi.EnumAutoma;
+import gattitopi.automi.medioautomi.MedioAutoma;
+import gattitopi.automi.medioautomi.MedioAutomaBase;
 import gattitopi.automi.microautomi.MicroAutoma;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,8 +17,22 @@ import gattitopi.automi.microautomi.MicroAutoma;
  */
 public class Intorno extends Prato{
     
-    public Intorno(int maxX, int maxY, MicroAutoma[][] matrice) {
+    private final Posizione centro;
+    
+    public Intorno(int maxX, int maxY, Campo campo, Posizione centro) {
         super(maxX, maxY);
-        this.matrice = matrice;
+        this.campo = campo;
+        this.centro = centro;
+    }
+
+    public ArrayList<MedioAutoma> cerca(EnumAutoma enumAutoma) {
+        ArrayList<MedioAutoma> gatti = new ArrayList<>();
+        
+        for (int x = 0; x < righe; x++)
+            for (int y = 0; y < colonne; y++)
+                if (enumAutoma.equals(campo.get(x, y).tipo()))
+                    gatti.add(new MedioAutomaBase(campo.get(x, y), new Posizione(x, y)));
+        
+        return gatti;
     }
 }

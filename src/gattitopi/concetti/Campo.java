@@ -11,17 +11,8 @@ import gattitopi.automi.microautomi.MicroAutoma;
  *
  * @author gorig
  */
-public class Campo {
-    private MicroAutoma[][] matrice;
+public interface Campo {
     
-    public Campo(int x, int y){ 
-        matrice = new MicroAutoma[x][y];
-    }
-    
-    public synchronized void set(int x, int y, MicroAutoma microAutoma){
-        matrice[x][y] = microAutoma;
-    }
-    public synchronized MicroAutoma get(int x, int y){
-        return matrice[x][y];
-    }
+    public void set(int x, int y, MicroAutoma microAutoma);
+    public MicroAutoma get(int x, int y);
 }

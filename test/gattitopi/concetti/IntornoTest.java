@@ -7,7 +7,6 @@ package gattitopi.concetti;
 
 import gattitopi.automi.FabbricaAutomi;
 import gattitopi.consolegui.ConsoleGui;
-import org.junit.Assert;
 import org.junit.Test;
 
 /**

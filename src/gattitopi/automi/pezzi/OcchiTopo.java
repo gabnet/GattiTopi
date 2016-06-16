@@ -6,6 +6,7 @@
 package gattitopi.automi.pezzi;
 
 import gattitopi.automi.EnumAutoma;
+import gattitopi.automi.microautomi.MicroAutoma;
 import gattitopi.concetti.Direzione;
 import gattitopi.concetti.Intorno;
 import gattitopi.concetti.Posizione;
@@ -23,48 +24,56 @@ public class OcchiTopo extends Occhi{
         
         Intorno intorno = prato.creaIntorno(posizione, vista);
         
-        
-        
+        MicroAutoma direzione;
+
         //O
-        if (!checkPrato(posizione.riga, posizione.colonna - 1) || !checkLibero(posizione.riga, posizione.colonna - 1))
+        direzione = intorno.prendi(posizione.riga, posizione.colonna - 1);
+        if (valida(direzione) || libera(direzione))
             muri.add(Direzione.O);
 
         //NO
-        if (!checkPrato(posizione.riga - 1, posizione.colonna - 1) || !checkLibero(posizione.riga - 1, posizione.colonna - 1))
+        direzione = intorno.prendi(posizione.riga - 1, posizione.colonna - 1);
+        if (valida(direzione) || libera(direzione))
             muri.add(Direzione.NO);
         
         //N
-        if (!checkPrato(posizione.riga - 1, posizione.colonna) || !checkLibero(posizione.riga - 1, posizione.colonna))
+        direzione = intorno.prendi(posizione.riga - 1, posizione.colonna);
+        if (valida(direzione) || libera(direzione))
              muri.add(Direzione.N);
 
         //NE
-        if (!checkPrato(posizione.riga - 1, posizione.colonna + 1) || !checkLibero(posizione.riga - 1, posizione.colonna + 1))
+        direzione = intorno.prendi(posizione.riga - 1, posizione.colonna + 1);
+        if (valida(direzione) || libera(direzione))
              muri.add(Direzione.NE);
         
         //E
-        if (!checkPrato(posizione.riga, posizione.colonna + 1) || !checkLibero(posizione.riga, posizione.colonna + 1))
+        direzione = intorno.prendi(posizione.riga, posizione.colonna + 1);
+        if (valida(direzione) || libera(direzione))
              muri.add(Direzione.E);
         
         //SE
-        if (!checkPrato(posizione.riga + 1, posizione.colonna + 1) || !checkLibero(posizione.riga + 1, posizione.colonna + 1))
+        direzione = intorno.prendi(posizione.riga + 1, posizione.colonna + 1);
+        if (valida(direzione) || libera(direzione))
              muri.add(Direzione.SE);
         
         //S
-        if (!checkPrato(posizione.riga + 1, posizione.colonna) || !checkLibero(posizione.riga + 1, posizione.colonna))
+        direzione = intorno.prendi(posizione.riga + 1, posizione.colonna);
+        if (valida(direzione) || libera(direzione))
              muri.add(Direzione.S);
         
         //SO
-        if (!checkPrato(posizione.riga + 1, posizione.colonna - 1) || !checkLibero(posizione.riga + 1, posizione.colonna - 1))
+        direzione = intorno.prendi(posizione.riga + 1, posizione.colonna - 1);
+        if (valida(direzione) || libera(direzione))
              muri.add(Direzione.SO);
         
         return muri;
     }
 
-    private boolean checkPrato(int riga, int colonna) {
-        return prato.valido(riga, colonna);
+    private boolean valida(MicroAutoma direzione) {
+        return direzione != null;
     }
 
-    private boolean checkLibero(int riga, int colonna) {
-        return prato.prendi(riga, colonna) != null && EnumAutoma.NULLO.equals(prato.prendi(riga, colonna).tipo());
+    private boolean libera(MicroAutoma direzione) {
+        return direzione != null && EnumAutoma.NULLO.equals(direzione.tipo());
     }
 }

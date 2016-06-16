@@ -17,12 +17,12 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Prato {
     
-    protected MicroAutoma[][] matrice;
-    private final int righe;
-    private final int colonne;
+    protected Campo campo;
+    protected final int righe;
+    protected final int colonne;
     
     public Prato(int maxX, int maxY) {
-        matrice = new MicroAutoma[maxX][maxY];
+        campo = new SyncCampo(maxX, maxY);
         righe = maxX;
         colonne = maxY;
     }
@@ -38,11 +38,11 @@ public class Prato {
     public MicroAutoma prendi(int riga, int colonna){
         if (riga < 0 || riga > righe - 1 || colonna < 0 || colonna > colonne - 1)
             return null;
-        return matrice[riga][colonna];
+        return campo.get(riga, colonna);
     }
     
     public void posiziona(MicroAutoma microAutoma, Posizione posizione){
-        matrice[posizione.riga][posizione.colonna] = microAutoma;
+        campo.set(posizione.riga, posizione.colonna, microAutoma);
     }
     
     public void aggiungiAutomi(Popolazione popolazione){
@@ -87,22 +87,22 @@ public class Prato {
         posiziona(daMuovere, nuova);
     }
     
-    public Intorno creaIntorno(Posizione posizione, int raggio){
-        int limiteSopra = posizione.riga - raggio - 1 < 0 ? 0 : posizione.riga - raggio - 1;
-        int limiteSotto = posizione.riga + raggio > righe() - 1 ? righe() - 1 : posizione.riga + raggio;
+    public Intorno creaIntorno(Posizione centro, int raggio){
+        int limiteSopra = centro.riga - raggio - 1 < 0 ? 0 : centro.riga - raggio - 1;
+        int limiteSotto = centro.riga + raggio > righe() - 1 ? righe() - 1 : centro.riga + raggio;
         
-        int limiteSinistro = posizione.colonna - raggio - 1 < 0 ? 0 : posizione.colonna - raggio - 1;
-        int limiteDestro = posizione.colonna + raggio > colonne() - 1 ? colonne() - 1 : posizione.colonna + raggio;
+        int limiteSinistro = centro.colonna - raggio - 1 < 0 ? 0 : centro.colonna - raggio - 1;
+        int limiteDestro = centro.colonna + raggio > colonne() - 1 ? colonne() - 1 : centro.colonna + raggio;
         
         int numeroColonne = limiteDestro - limiteSinistro + 1;
         int numeroRighe = limiteSotto - limiteSopra + 1;
         
-        MicroAutoma[][] nuovaMatrice = new MicroAutoma[numeroRighe][numeroColonne];
+        Campo nuovoAsyncCampo = new AsyncCampo(numeroRighe, numeroColonne);
         
         for (int riga = 0; riga < numeroRighe; riga++ )
             for (int colonna = 0; colonna < numeroColonne; colonna++)
-                nuovaMatrice[riga][colonna] = prendi(riga + limiteSopra, colonna + limiteSinistro);
+                nuovoAsyncCampo.set(riga, colonna, prendi(riga + limiteSopra, colonna + limiteSinistro));
         
-        return new Intorno(numeroRighe, numeroColonne, nuovaMatrice);
+        return new Intorno(numeroRighe, numeroColonne, nuovoAsyncCampo, centro);
     }
 }
