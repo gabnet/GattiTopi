@@ -14,5 +14,7 @@ import java.util.ArrayList;
  * @author gorig
  */
 public abstract class Occhi extends Pezzo{
+    protected Integer vista = 1;
+    
     public abstract ArrayList<Direzione> guarda(Posizione posizione);
 }

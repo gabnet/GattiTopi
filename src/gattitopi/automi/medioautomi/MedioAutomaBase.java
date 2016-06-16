@@ -14,13 +14,17 @@ import gattitopi.concetti.Posizione;
  *
  * @author gorig
  */
-public abstract class MedioAutomaBase extends MicroAutomaBase implements MedioAutoma {
+public class MedioAutomaBase extends MicroAutomaBase implements MedioAutoma {
     
     protected Posizione posizione;
     
     public MedioAutomaBase(EnumAutoma tipo, Integer id, Posizione posizione) {
         super(tipo, id);
         this.posizione = posizione;
+    }
+
+    public MedioAutomaBase(MicroAutoma prendi, Posizione posizione) {
+        this(prendi.tipo(), prendi.id(), posizione);
     }
     
     @Override

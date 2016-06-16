@@ -7,6 +7,7 @@ package gattitopi.automi.pezzi;
 
 import gattitopi.automi.EnumAutoma;
 import gattitopi.concetti.Direzione;
+import gattitopi.concetti.Intorno;
 import gattitopi.concetti.Posizione;
 import java.util.ArrayList;
 
@@ -19,6 +20,10 @@ public class OcchiTopo extends Occhi{
     @Override
     public ArrayList<Direzione> guarda(Posizione posizione) {
         ArrayList<Direzione> muri = new ArrayList<>();
+        
+        Intorno intorno = prato.creaIntorno(posizione, vista);
+        
+        
         
         //O
         if (!checkPrato(posizione.riga, posizione.colonna - 1) || !checkLibero(posizione.riga, posizione.colonna - 1))

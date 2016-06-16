@@ -9,7 +9,7 @@ import gattitopi.automi.Automa;
 import gattitopi.automi.EnumAutoma;
 import gattitopi.automi.FabbricaAutomi;
 import gattitopi.automi.microautomi.MicroAutoma;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -47,7 +47,6 @@ public class Prato {
     
     public void aggiungiAutomi(Popolazione popolazione){
         
-        Random dado = new Random();
         int numeroAutomi = popolazione.quantiAutomi();
         
         while (numeroAutomi > 0)
@@ -55,7 +54,8 @@ public class Prato {
                 for (int colonna = 0; colonna < colonne()  && numeroAutomi > 0; colonna++){
                     if (EnumAutoma.NULLO.equals(prendi(riga, colonna).tipo())){
                         
-                        if (dado.nextInt(righe() * colonne()) % 97 == 0){
+                         if (ThreadLocalRandom.current().nextInt(righe() * colonne()) % 97 == 0){
+
                             
                             Automa automa = popolazione.prendiAutoma(numeroAutomi - 1);
                             automa.setPosizione(new Posizione(riga, colonna));
