@@ -8,7 +8,6 @@ package gattitopi.concetti;
 import gattitopi.automi.EnumAutoma;
 import gattitopi.automi.medioautomi.MedioAutoma;
 import gattitopi.automi.medioautomi.MedioAutomaBase;
-import gattitopi.automi.microautomi.MicroAutoma;
 import java.util.ArrayList;
 
 /**
